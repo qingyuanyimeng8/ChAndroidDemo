@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hotfix.hotfixapplication">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于访问网络，网络定位需要上网-->
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!--用于写入缓存数据到扩展存储卡-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
     <application
         android:name=".sophix.SophixStubApplication"
@@ -23,17 +42,35 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.GaodeActivity"/>
+        <activity android:name=".ui.TouchActivity"/>
+
         <!-- Sophix start -->
         <meta-data
             android:name="com.taobao.android.hotfix.IDSECRET"
-            android:value="25253528" />
+            android:value="25327836" />
         <meta-data
             android:name="com.taobao.android.hotfix.APPSECRET"
-            android:value="f38e68df5828f9bdc54774483ddd8b0b" />
+            android:value="e02de5a8adc8b4d00e4cc1177f94f484" />
         <meta-data
             android:name="com.taobao.android.hotfix.RSASECRET"
-            android:value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCG/Q1TOVENvdpRwtR0ZxaEHcLfaf/8GyFbh8gLpE+/ADPO3r66N7ckuo1Ze+OEhX2OxXpuKUzdZ/wJFKR4xJhgToqRLU4+hDoTpJUcZ3uETuC+Drp90wWJFVM9W3lDqept98sEDy7zjPlrZse48oUpOatxCHm2+TF0b76BL4dD5h1y40Q8wPrVBluODBcAz/PLTSDVrg0lIS8lBuosgPbIwWXjeE/2Ar1CntZbhcy/qdjG93l/VkMEhL9f0xirmKmMz35dH5huH0xJcPh2Go05VigTZvnD7hizbIdFWZPulLCZlY/eH9gwq+pK8C6cjSfcY+YIvZ6Wq2FhFItd6IdXAgMBAAECggEAPS2Wym8hov62YXPRYegOtlXeqe6ai6GoHpmNOml/kur+j/U3r6HsqQK7aSDS3o65duldMWwaYAXunhby66D+BjfSaTWFTqQSxjBDPBpSSoaNKNX4A2qOCbDWhupcLSRnEOvK4M4Y01zC9cAhKFsRqrtuTc4vi5OorEKwrk/iGA0WnOtoQZGz3M54kHK59HW7krPhq93kM5yNPLsrcmR1HMXk9JfepcDEYy+DrcyNCxvcfVmw6LVKpk2sywGjwJs/PEKO5tdO0xH7EqXmrg2WYdloQHJYI6fOkGcqgtACAf0uQtFNEGNAMHwh7LMyGpfEx3vCGPa3KQG8+4skSBk/AQKBgQDwPX4mCFq6fAKs0gJIFuIGQPUc1mGOJaZiZ2RdWyk/tzwPMUH1w5R2shb/udJweenMNOzjMBvvTROYqQVSEnk2YcED3ByuYMvtMCRXf9RZ+o9g0I9IyWP5dUUNcoEAWlGUj9UqKgNlFrHYADMF9tJhnSrA1Oiz5GKS2WY3sIT3wQKBgQCP1//5HhgMRIQBwvTyaeOVuhAhX3A2YQW/RFQQfAzjwXWaUPLxA70EY4GObZI9Ot2DGuQ2nlSwdb7eEVVhOE5j2RMsqax8gICaPJOwbL97danr11eFw2Vec80FUBeS7JQxxmySBl4e+5nUKM4YwYA9a0LsPgMl0yY6ReZrpP+FFwKBgQCK30EYwyOPQThapltjSLcHXm1SaiqifOkdYR8HSDcj+cviDFtQseoUYwYgdU5MbmzT+pQlEB5VynxVdv74Xm1rHj7w+EAsHRBE39tiKSabjNds46KwNJpyDXQJPfOMPKmD81EJupeTy/aqIhNckz0x6CRaq7iIpLDGqp0H/CYhAQKBgBiMo8ovgakuVF08mbN5sPbPz4ryj+MoAeQX1EUP9t80GE8i+6N4oNzL4sOdHbVHg6CpiUNtGEUZg17BFJJIGtDdrnET8DU7dTddmVMl7DQ067Ati2lv5LAPEXGTrsJLkCtCkysE3TFqfWGBKVN+StWwpbZOCxl8hOyzG1VJzrY3AoGBALc93zcgunhjtoHIb34KH7JbVXEFogKRaEEInTnzPsIIedayiEkDyHjOBxq4377itK8X1wNWswrsMuMRyI+wBVBtUCZ3hReaesM/Ea48Gppb+gJ4VNDZKj5fu7alYVQw3RQIze2FbsXEkRBkzqcDkED6cAeRxUjCY1Zndml/7qTc" />
+            android:value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDJmNwAhxeN6w4XyLTYI/kdz4dX2iEQGjjnTGi4YEezBlLre0rL6KniyCc0r1XrAl1e1LXVrOO36W5avjbNdmkxA+w9QylRue+ea7viRX83gDhvEp4OsJm1uuc1U0kr1yEi8fw7uJpA+dGGRM7CfzJZ/Bgs/UxI1TFiM6Y25YscGuWmEWiJP/QcWLd0H8oN986nDgAsoudt4fgUpK+3gh7NKpBM+lqlSMJAfC0ENmDQ9vsV77KyeAAorOEm6HxIzqpypL2QeSWtXZRkUh4XYED9LSUTewQZQ7BgabrtGWok8ZoNLhjMMHxxvje0SDoqK6t9uIg2441b2O8iQh8E8TfrAgMBAAECggEBAIQi2TDPWzT+OIKGX2K8UXCksgV3R+ySA3I3tvwCv3wsTPVkHqaAnbmzj18M/bfIGQMrUPP5GllVe6umuaz6TACAnbuZ5d9XjCO+Yavx+WybcmH7RfZC8r0XAK0HJhLCM0oAal+KpDCqjhb/yrXZQVuRzRbP/8xNUM0ZJX0d/4wvOUZeJkGeSVn/skaHwC+WPcOZ3ac/K+w4Zw++y8LbzpFfwM9GmiudEHDTEas8Qu9Y1MVuVi+xhOZAeuN4cx21S9Kx47lic03xmNTLNHJWpsmbuJ8vLH+ansGwgaVue4Kt7yBuWGpETwt/iUzFP2mBVq21AUzppfMfDcToVRxolmECgYEA/uY44LGRkDvMXC6eGLVCBheLZhMUhMHzw19ONg9szUechVIfOiffLOaxIPQpvJZNiN4GhyGuadWsYTicgTxAzxdLl3+R4MFru7WiWlQNsROpH6YES3NMURWK31KT55hjkdKPPyVuO1JHJ0YotiRMkdZh9T671Lhd18xTtgY799cCgYEAyne25Bkpcyfj46lIJ5ay/H5NE8/Ru9Sk+pDUiQvZbZKIbYiN+jdVDupBpuEHViMWULAuO24Ia+rL250JK5IwfyyLGXW6BRqjf0AfxhDr9IhDntuTBPA0Q+Bjl/yLRfHuQbygRoR5llidM2Yxj2zTJ/ZdOx0WR0JDFu4+7I3rLg0CgYBS/O99sDI9LErfpEnSr4i8ZQP8iq++fUr4y9mx3hnFR9Bc05zZGUwe2UjH+tZv0NuTeP3VFxEq4edKi9zgcpaDFgmFXIJJE5AYwA0IrZ77jPQeGrYBPpuVNpdNGByRZVrdihkbLPuTkrkZv0zX6D+Jp6ui5fbPTes3rA2BEMyLZwKBgBfgsHgMI6BKFw01XKYWlrtCZfKtMq31MRO/2uDivdy3SFGqphvZRLXCmMWGimf1MV+It5sYqfOYODyJM5io4AFPjoQNJ0gM0TVjqZuhSUKIg3kLqjYN4gwTPYuiJAa2toOYLErEutYpUzjJl5Szn995pZsgHg1/WgwtQsyBHDhNAoGBAPwtTJbGqT9/h/x6b6saJ4IAKpEGVdMmXMuZZzVwHugBlG2DI1UwlevOTNQ52Uh/JNqYSorWaOGgBobsfw7bp+MuxPRP0QTcHrU53ARrT0/nO+q4qc02dLmnyrsSpUJl39ZfgCtGAs0ZKM7nndpntMVexAWjk+cKYyF5OiJCeiHK" />
         <!-- Sophix end -->
+
+        <meta-data
+            android:name="V3_CHANNEL"
+            android:value="OTHERS" />
+
+        <!--高德地图-->
+        <service android:name="com.amap.api.location.APSService"></service>
+        <service android:name=".ServiceTest.IntentServiceDemo"
+            tools:ignore="InnerclassSeparator" />
+        <service android:name=".ServiceTest.ServiceDemo" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ce3447329c187fdf4e822e3417d12b5d" />
+
     </application>
 
 </manifest>

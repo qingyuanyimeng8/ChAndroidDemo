@@ -12910,9 +12910,9 @@ com.example.hotfix.hotfixapplication.MainActivity -> com.example.hotfix.hotfixap
     int mBorderWidth -> p
     com.scwang.smartrefresh.layout.SmartRefreshLayout srl -> q
     android.support.v7.widget.RecyclerView rv -> r
-    java.util.List list -> k
-    com.example.hotfix.hotfixapplication.ListBean listBean -> l
-    com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter footRecyclerAdapter -> m
+    com.example.hotfix.hotfixapplication.recycler.RecycleAdapter recyclerAdapter -> k
+    java.util.List list -> l
+    com.example.hotfix.hotfixapplication.ListBean listBean -> m
     void <init>() -> <init>
     void onCreate(android.os.Bundle) -> onCreate
     void onResume() -> onResume
@@ -12929,20 +12929,19 @@ com.example.hotfix.hotfixapplication.MainActivity$2 -> com.example.hotfix.hotfix
 com.example.hotfix.hotfixapplication.MainActivity$3 -> com.example.hotfix.hotfixapplication.MainActivity$3:
     com.example.hotfix.hotfixapplication.MainActivity this$0 -> a
     void <init>(com.example.hotfix.hotfixapplication.MainActivity,android.content.Context,int) -> <init>
-    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,com.example.hotfix.hotfixapplication.ListBean) -> a
-    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,java.lang.Object) -> a
+    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,com.example.hotfix.hotfixapplication.ListBean,int) -> a
+    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,java.lang.Object,int) -> a
 com.example.hotfix.hotfixapplication.MainActivity$3$1 -> com.example.hotfix.hotfixapplication.MainActivity$3$1:
-    com.example.hotfix.hotfixapplication.MainActivity$3 this$1 -> a
-    void <init>(com.example.hotfix.hotfixapplication.MainActivity$3) -> <init>
+    int val$position -> a
+    com.example.hotfix.hotfixapplication.ListBean val$item -> b
+    com.example.hotfix.hotfixapplication.MainActivity$3 this$1 -> c
+    void <init>(com.example.hotfix.hotfixapplication.MainActivity$3,int,com.example.hotfix.hotfixapplication.ListBean) -> <init>
     void onClick(android.view.View) -> onClick
 com.example.hotfix.hotfixapplication.MainActivity$4 -> com.example.hotfix.hotfixapplication.MainActivity$4:
     com.example.hotfix.hotfixapplication.MainActivity this$0 -> a
     void <init>(com.example.hotfix.hotfixapplication.MainActivity) -> <init>
-    void onLoadEnd() -> a
-com.example.hotfix.hotfixapplication.MainActivity$5 -> com.example.hotfix.hotfixapplication.MainActivity$5:
-    com.example.hotfix.hotfixapplication.MainActivity this$0 -> a
-    void <init>(com.example.hotfix.hotfixapplication.MainActivity) -> <init>
-    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> a_
+    void onLoadmore(com.scwang.smartrefresh.layout.api.RefreshLayout) -> a
+    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> b
 com.example.hotfix.hotfixapplication.MyApplication -> com.example.hotfix.hotfixapplication.b:
     void onCreate() -> onCreate
 com.example.hotfix.hotfixapplication.WaveHelper -> com.example.hotfix.hotfixapplication.c:
@@ -12960,54 +12959,39 @@ com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper -> com.example.h
     android.view.View retrieveView(int) -> c
     android.widget.TextView getTextView(int) -> d
 com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter -> com.example.hotfix.hotfixapplication.a.b:
-    java.lang.String TAG -> a
-    void <clinit>() -> <clinit>
-com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter$OnItemClickListener -> com.example.hotfix.hotfixapplication.a.b$a:
-    void onItemClick(android.view.View,int) -> a
-com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter -> com.example.hotfix.hotfixapplication.a.c:
     java.lang.String TAG -> b
-    int SIZE -> c
-    android.content.Context context -> d
-    int layoutResId -> a
-    int load_more_status -> g
+    android.content.Context context -> c
+    int layoutResId -> d
     java.util.List data -> e
-    com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter$OnItemClickListener mOnItemClickListener -> h
+    com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter$OnItemClickListener mOnItemClickListener -> a
     com.example.hotfix.hotfixapplication.recycler.MultiItemTypeSupport mMultiItemTypeSupport -> f
-    com.example.hotfix.hotfixapplication.recycler.LoadMore$OnLoadEndListener onLoadEndListener -> i
-    boolean loadMoreEnabled -> j
-    boolean loadingMore -> k
-    boolean isCommonBottomVisible -> l
+    com.example.hotfix.hotfixapplication.recycler.LoadMore$OnLoadEndListener onLoadEndListener -> g
+    boolean loadMoreEnabled -> h
+    boolean loadingMore -> i
     void <init>(android.content.Context,int) -> <init>
     void <init>(android.content.Context,int,java.util.List) -> <init>
-    int getItemViewType(int) -> a
     int getItemCount() -> a
     java.lang.Object getItem(int) -> c
     long getItemId(int) -> b
-    android.support.v7.widget.RecyclerView$ViewHolder onCreateViewHolder(android.view.ViewGroup,int) -> a
-    void onBindViewHolder(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
-    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,java.lang.Object) -> a
+    int getItemViewType(int) -> a
+    com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper onCreateViewHolder(android.view.ViewGroup,int) -> c
+    void onBindViewHolder(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,int) -> a
+    void convert(com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper,java.lang.Object,int) -> a
     void onClick(android.view.View) -> onClick
     void addAll(java.util.List) -> a
     void setDataList(java.util.List,boolean) -> a
+    void setDataList(java.util.List,boolean,int) -> a
     void checkLoadMore(int) -> d
-    void setOnLoadEndListener(com.example.hotfix.hotfixapplication.recycler.LoadMore$OnLoadEndListener) -> a
-    void changeMoreStatus(int) -> e
-    boolean access$300(com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter) -> a
+    void onBindViewHolder(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
+    android.support.v7.widget.RecyclerView$ViewHolder onCreateViewHolder(android.view.ViewGroup,int) -> a
     void <clinit>() -> <clinit>
-com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter$1 -> com.example.hotfix.hotfixapplication.a.c$1:
-    com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter this$0 -> a
-    void <init>(com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter) -> <init>
+com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter$1 -> com.example.hotfix.hotfixapplication.a.b$1:
+    com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter this$0 -> a
+    void <init>(com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter) -> <init>
     void run() -> run
-com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter$FootViewHolder -> com.example.hotfix.hotfixapplication.a.c$a:
-    android.view.View disc_bottom -> q
-    android.widget.TextView foot_view_item_tv -> r
-    android.widget.TextView tv_down -> s
-    android.widget.ProgressBar progressBar -> t
-    void <init>(android.view.View) -> <init>
-    android.view.View access$000(com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter$FootViewHolder) -> a
-    android.widget.TextView access$100(com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter$FootViewHolder) -> b
-    android.widget.ProgressBar access$200(com.example.hotfix.hotfixapplication.recycler.FootRecyclerAdapter$FootViewHolder) -> c
-com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable -> com.example.hotfix.hotfixapplication.a.d:
+com.example.hotfix.hotfixapplication.recycler.BaseQuickAdapter$OnItemClickListener -> com.example.hotfix.hotfixapplication.a.b$a:
+    void onItemClick(android.view.View,int) -> a
+com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable -> com.example.hotfix.hotfixapplication.a.c:
     android.content.Context mContext -> a
     android.graphics.Bitmap indicatorBitmap -> b
     android.graphics.Bitmap progressBitmap -> c
@@ -13027,11 +13011,11 @@ com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable -> com.example.
     int getOpacity() -> getOpacity
     void setPercent(float) -> a
     int access$002(com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable,int) -> a
-com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable$1 -> com.example.hotfix.hotfixapplication.a.d$1:
+com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable$1 -> com.example.hotfix.hotfixapplication.a.c$1:
     com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable this$0 -> a
     void <init>(com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable) -> <init>
     void onAnimationUpdate(android.animation.ValueAnimator) -> onAnimationUpdate
-com.example.hotfix.hotfixapplication.recycler.HBRefreshHeader -> com.example.hotfix.hotfixapplication.a.e:
+com.example.hotfix.hotfixapplication.recycler.HBRefreshHeader -> com.example.hotfix.hotfixapplication.a.d:
     android.widget.TextView tv_hint -> a
     android.widget.ImageView iv_indicator -> b
     com.example.hotfix.hotfixapplication.recycler.HBProgressDrawable mProgressDrawable -> c
@@ -13049,14 +13033,17 @@ com.example.hotfix.hotfixapplication.recycler.HBRefreshHeader -> com.example.hot
     int onFinish(com.scwang.smartrefresh.layout.api.RefreshLayout,boolean) -> a
     boolean isSupportHorizontalDrag() -> a
     void onStateChanged(com.scwang.smartrefresh.layout.api.RefreshLayout,com.scwang.smartrefresh.layout.constant.RefreshState,com.scwang.smartrefresh.layout.constant.RefreshState) -> a
-com.example.hotfix.hotfixapplication.recycler.HBRefreshHeader$1 -> com.example.hotfix.hotfixapplication.a.e$1:
+com.example.hotfix.hotfixapplication.recycler.HBRefreshHeader$1 -> com.example.hotfix.hotfixapplication.a.d$1:
     int[] $SwitchMap$com$scwang$smartrefresh$layout$constant$RefreshState -> a
     void <clinit>() -> <clinit>
-com.example.hotfix.hotfixapplication.recycler.LoadMore -> com.example.hotfix.hotfixapplication.a.f:
-com.example.hotfix.hotfixapplication.recycler.LoadMore$OnLoadEndListener -> com.example.hotfix.hotfixapplication.a.f$a:
+com.example.hotfix.hotfixapplication.recycler.LoadMore -> com.example.hotfix.hotfixapplication.a.e:
+com.example.hotfix.hotfixapplication.recycler.LoadMore$OnLoadEndListener -> com.example.hotfix.hotfixapplication.a.e$a:
     void onLoadEnd() -> a
-com.example.hotfix.hotfixapplication.recycler.MultiItemTypeSupport -> com.example.hotfix.hotfixapplication.a.g:
+com.example.hotfix.hotfixapplication.recycler.MultiItemTypeSupport -> com.example.hotfix.hotfixapplication.a.f:
     int getLayoutId(int) -> a
+    int getItemViewType(int,java.lang.Object) -> a
+com.example.hotfix.hotfixapplication.recycler.RecycleAdapter -> com.example.hotfix.hotfixapplication.a.g:
+    void <init>(android.content.Context,int) -> <init>
 com.example.hotfix.hotfixapplication.sophix.SophixStubApplication -> com.example.hotfix.hotfixapplication.sophix.SophixStubApplication:
     java.lang.String TAG -> a
     void <init>() -> <init>
@@ -13742,16 +13729,17 @@ com.scwang.smartrefresh.layout.SmartRefreshLayout -> com.scwang.smartrefresh.lay
     com.scwang.smartrefresh.layout.api.RefreshHeader getRefreshHeader() -> getRefreshHeader
     com.scwang.smartrefresh.layout.constant.RefreshState getState() -> getState
     com.scwang.smartrefresh.layout.SmartRefreshLayout getLayout() -> getLayout
-    com.scwang.smartrefresh.layout.SmartRefreshLayout setOnRefreshListener(com.scwang.smartrefresh.layout.listener.OnRefreshListener) -> a
+    com.scwang.smartrefresh.layout.SmartRefreshLayout setOnRefreshLoadmoreListener(com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener) -> a
     com.scwang.smartrefresh.layout.SmartRefreshLayout setLoadmoreFinished(boolean) -> d
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishRefresh() -> m
+    com.scwang.smartrefresh.layout.SmartRefreshLayout finishLoadmore() -> n
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishRefresh(int) -> d
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishRefresh(int,boolean) -> b
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishLoadmore(int) -> e
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishLoadmore(int,boolean) -> c
     com.scwang.smartrefresh.layout.SmartRefreshLayout finishLoadmore(int,boolean,boolean) -> a
-    boolean isEnableLoadmore() -> n
-    boolean isEnableRefresh() -> o
+    boolean isEnableLoadmore() -> o
+    boolean isEnableRefresh() -> p
     void setDefaultRefreshHeaderCreater(com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreater) -> setDefaultRefreshHeaderCreater
     void setDefaultRefreshFooterCreater(com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreater) -> setDefaultRefreshFooterCreater
     boolean post(java.lang.Runnable) -> post
@@ -13791,7 +13779,7 @@ com.scwang.smartrefresh.layout.SmartRefreshLayout$2 -> com.scwang.smartrefresh.l
 com.scwang.smartrefresh.layout.SmartRefreshLayout$3 -> com.scwang.smartrefresh.layout.SmartRefreshLayout$5:
     com.scwang.smartrefresh.layout.SmartRefreshLayout this$0 -> a
     void <init>(com.scwang.smartrefresh.layout.SmartRefreshLayout) -> <init>
-    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> a_
+    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> b
 com.scwang.smartrefresh.layout.SmartRefreshLayout$4 -> com.scwang.smartrefresh.layout.SmartRefreshLayout$6:
     com.scwang.smartrefresh.layout.SmartRefreshLayout this$0 -> a
     void <init>(com.scwang.smartrefresh.layout.SmartRefreshLayout) -> <init>
@@ -14006,10 +13994,11 @@ com.scwang.smartrefresh.layout.footer.ClassicsFooter -> com.scwang.smartrefresh.
     android.view.View getView() -> getView
     com.scwang.smartrefresh.layout.constant.SpinnerStyle getSpinnerStyle() -> getSpinnerStyle
     void onStateChanged(com.scwang.smartrefresh.layout.api.RefreshLayout,com.scwang.smartrefresh.layout.constant.RefreshState,com.scwang.smartrefresh.layout.constant.RefreshState) -> a
-    com.scwang.smartrefresh.layout.footer.ClassicsFooter setAccentColor(int) -> a
-    com.scwang.smartrefresh.layout.footer.ClassicsFooter setPrimaryColor(int) -> b
+    com.scwang.smartrefresh.layout.footer.ClassicsFooter setProgressResource(int) -> a
+    com.scwang.smartrefresh.layout.footer.ClassicsFooter setAccentColor(int) -> b
+    com.scwang.smartrefresh.layout.footer.ClassicsFooter setPrimaryColor(int) -> c
     com.scwang.smartrefresh.layout.footer.ClassicsFooter setDrawableSize(float) -> a
-    com.scwang.smartrefresh.layout.footer.ClassicsFooter setDrawableSizePx(int) -> c
+    com.scwang.smartrefresh.layout.footer.ClassicsFooter setDrawableSizePx(int) -> d
     android.widget.TextView getTitleText() -> getTitleText
     android.widget.ImageView getProgressView() -> getProgressView
     android.widget.ImageView getArrowView() -> getArrowView
@@ -14344,7 +14333,7 @@ com.scwang.smartrefresh.layout.listener.OnMultiPurposeListener -> com.scwang.sma
     void onFooterStartAnimator(com.scwang.smartrefresh.layout.api.RefreshFooter,int,int) -> b
     void onFooterFinish(com.scwang.smartrefresh.layout.api.RefreshFooter,boolean) -> a
 com.scwang.smartrefresh.layout.listener.OnRefreshListener -> com.scwang.smartrefresh.layout.g.c:
-    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> a_
+    void onRefresh(com.scwang.smartrefresh.layout.api.RefreshLayout) -> b
 com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener -> com.scwang.smartrefresh.layout.g.d:
 com.scwang.smartrefresh.layout.listener.OnStateChangedListener -> com.scwang.smartrefresh.layout.g.e:
     void onStateChanged(com.scwang.smartrefresh.layout.api.RefreshLayout,com.scwang.smartrefresh.layout.constant.RefreshState,com.scwang.smartrefresh.layout.constant.RefreshState) -> a
@@ -14747,6 +14736,7 @@ com.taobao.sophix.SophixManager -> com.taobao.sophix.SophixManager:
     com.taobao.sophix.SophixManager setProcessSpecialClass(java.lang.Class) -> setProcessSpecialClass
     com.taobao.sophix.SophixManager setUsingEnhance() -> setUsingEnhance
     com.taobao.sophix.SophixManager setHost(java.lang.String,boolean) -> setHost
+    com.taobao.sophix.SophixManager setTags(java.util.List) -> setTags
     void queryAndLoadNewPatch() -> queryAndLoadNewPatch
     java.lang.Object getPatchStateInfo() -> getPatchStateInfo
     void cleanPatches() -> cleanPatches
@@ -14853,6 +14843,7 @@ com.taobao.sophix.a.e -> com.taobao.sophix.a.e:
     com.taobao.sophix.SophixManager setEnableFullLog() -> setEnableFullLog
     com.taobao.sophix.SophixManager setPreLoadedClass(java.lang.Class) -> setPreLoadedClass
     com.taobao.sophix.SophixManager setHost(java.lang.String,boolean) -> setHost
+    com.taobao.sophix.SophixManager setTags(java.util.List) -> setTags
     void queryAndLoadNewPatch() -> queryAndLoadNewPatch
     com.taobao.sophix.SophixManager setSecretMetaData(java.lang.String,java.lang.String,java.lang.String) -> setSecretMetaData
     void a(java.lang.String,com.taobao.sophix.c.c,com.taobao.sophix.listener.PatchLoadStatusListener) -> a
@@ -15084,10 +15075,11 @@ com.taobao.sophix.d.a -> com.taobao.sophix.d.a:
     java.lang.String e -> e
     java.lang.String f -> f
     java.lang.String g -> g
-    boolean h -> h
-    long i -> i
-    java.lang.String j -> j
-    java.util.concurrent.atomic.AtomicBoolean k -> k
+    java.util.List h -> h
+    boolean i -> i
+    long j -> j
+    java.lang.String k -> k
+    java.util.concurrent.atomic.AtomicBoolean l -> l
     void <init>() -> <init>
     void a(java.lang.String,java.lang.String) -> a
     void a(java.lang.String,java.lang.String,java.lang.String) -> a
@@ -15100,12 +15092,19 @@ com.taobao.sophix.d.a -> com.taobao.sophix.d.a:
     java.lang.String a(com.taobao.sophix.d.b.a,java.lang.String) -> a
     java.lang.String a(java.lang.String,int) -> a
     void c() -> c
+    void a(java.util.List) -> a
     void a(com.taobao.sophix.d.a,com.taobao.sophix.d.a.c,java.lang.String,com.taobao.sophix.c.c) -> a
+    java.util.List a(com.taobao.sophix.d.a) -> a
 com.taobao.sophix.d.a$1 -> com.taobao.sophix.d.a$1:
     com.taobao.sophix.c.c a -> a
     com.taobao.sophix.d.a b -> b
     void <init>(com.taobao.sophix.d.a,com.taobao.sophix.c.c) -> <init>
     void run() -> run
+com.taobao.sophix.d.a$a -> com.taobao.sophix.d.a$a:
+    com.taobao.sophix.d.a a -> a
+    void <init>(com.taobao.sophix.d.a) -> <init>
+    java.lang.String a() -> a
+    void <init>(com.taobao.sophix.d.a,com.taobao.sophix.d.a$1) -> <init>
 com.taobao.sophix.d.a.a -> com.taobao.sophix.d.a.a:
     java.lang.String[] d -> d
     java.lang.String a -> a
@@ -15140,6 +15139,27 @@ com.taobao.sophix.d.b.a -> com.taobao.sophix.d.b.a:
     java.lang.String d -> d
     void <init>() -> <init>
     java.lang.String toString() -> toString
+com.taobao.sophix.d.c.a -> com.taobao.sophix.d.c.a:
+    int a -> a
+    java.lang.String b -> b
+    java.lang.String c -> c
+    void <init>() -> <init>
+    com.taobao.sophix.d.c.a a() -> a
+    java.lang.String b() -> b
+    int c() -> c
+    void a(android.content.Context) -> a
+    java.lang.String d() -> d
+    void b(android.content.Context) -> b
+    java.lang.String c(android.content.Context) -> c
+    java.lang.String d(android.content.Context) -> d
+    java.lang.String e(android.content.Context) -> e
+    int f(android.content.Context) -> f
+    void <init>(com.taobao.sophix.d.c.a$1) -> <init>
+com.taobao.sophix.d.c.a$1 -> com.taobao.sophix.d.c.a$1:
+com.taobao.sophix.d.c.a$a -> com.taobao.sophix.d.c.a$a:
+    com.taobao.sophix.d.c.a a -> a
+    com.taobao.sophix.d.c.a a() -> a
+    void <clinit>() -> <clinit>
 com.taobao.sophix.e.a -> com.taobao.sophix.e.a:
     boolean a(java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     android.util.Pair b(java.lang.String,java.lang.String) -> b

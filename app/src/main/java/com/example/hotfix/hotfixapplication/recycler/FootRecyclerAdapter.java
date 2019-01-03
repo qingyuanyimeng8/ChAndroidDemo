@@ -70,7 +70,7 @@ public abstract class FootRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      * Create a QuickAdapter.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The activity_touch resource id of each item.
      */
     protected FootRecyclerAdapter(Context context, int layoutResId) {
         this(context, layoutResId, null);
@@ -81,7 +81,7 @@ public abstract class FootRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
      * some initialization data.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The activity_touch resource id of each item.
      * @param data        A new list is created out of this one to avoid mutable list
      */
     protected FootRecyclerAdapter(Context context, int layoutResId, List<T> data) {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="burce">
+        <attr name="mHeight" format="integer"/>
+        <attr name="mWidth" format="integer"/>
+        <attr name="mName" format="string"/>
+        <attr name="sex" format="enum">
+            <enum name="man" value="0"/>
+            <enum name="woman" value="1"/>
+        </attr>
+        <attr name="student" format="boolean"/>
+    </declare-styleable>
+
+</resources>
