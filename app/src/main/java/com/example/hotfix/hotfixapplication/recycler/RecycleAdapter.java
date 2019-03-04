@@ -14,7 +14,7 @@ public abstract class RecycleAdapter<T> extends BaseQuickAdapter<T, BaseAdapterH
      * Create a QuickAdapter.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The mvp_rv_item resource id of each item.
      */
     public RecycleAdapter(Context context, @LayoutRes int layoutResId) {
         super(context, layoutResId);
@@ -25,7 +25,7 @@ public abstract class RecycleAdapter<T> extends BaseQuickAdapter<T, BaseAdapterH
      * some initialization data.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The mvp_rv_item resource id of each item.
      * @param data        A new list is created out of this one to avoid mutable list
      */
     public RecycleAdapter(Context context, @LayoutRes int layoutResId, List<T> data) {

@@ -38,7 +38,7 @@ public abstract class BaseQuickAdapter<T, H extends BaseAdapterHelper>
      * Create a QuickAdapter.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The mvp_rv_item resource id of each item.
      */
     protected BaseQuickAdapter(Context context, int layoutResId) {
         this(context, layoutResId, null);
@@ -49,7 +49,7 @@ public abstract class BaseQuickAdapter<T, H extends BaseAdapterHelper>
      * some initialization data.
      *
      * @param context     The context.
-     * @param layoutResId The layout resource id of each item.
+     * @param layoutResId The mvp_rv_item resource id of each item.
      * @param data        A new list is created out of this one to avoid mutable list
      */
     protected BaseQuickAdapter(Context context, int layoutResId, List<T> data) {

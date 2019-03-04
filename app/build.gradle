@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 //热修复配置
 apply plugin: 'com.aliyun.ams.emas-services'
 
+
 def libs = rootProject.ext.libraries //动态配置库版本
 
 android {
@@ -27,22 +28,32 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    compile project(":library")
+    implementation project(":library")
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
     implementation "com.android.support:support-v4:${libs.support}"
     implementation "com.android.support:appcompat-v7:${libs.support}"
     implementation "com.android.support:recyclerview-v7:${libs.support}"
     //热修复
-    compile 'com.aliyun.ams:alicloud-android-hotfix:3.2.7'
+    implementation 'com.aliyun.ams:alicloud-android-hotfix:3.2.7'
     //高德定位
-    compile 'com.amap.api:location:latest.integration'
-    compile 'com.amap.api:search:latest.integration'
-    compile 'com.amap.api:map2d:latest.integration'
-    compile 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
-
-
+    implementation 'com.amap.api:location:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:map2d:latest.integration'
+    //rxjava+retrofit
+    implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.0.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    implementation 'io.reactivex:rxandroid:1.1.0'
+    implementation "io.reactivex:rxandroid:${libs.rxandroid}"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
