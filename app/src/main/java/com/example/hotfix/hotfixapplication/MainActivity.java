@@ -1,17 +1,20 @@
 package com.example.hotfix.hotfixapplication;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -158,6 +161,20 @@ public class MainActivity extends AppCompatActivity {
         final MainActivity activity = new MainActivity();
         permissionHelper = PermissionHelper.createForLocation(this);
         permissionHelper.requestPermission(REQUEST_CODE_SETTINGS);
+
+        /**
+         * 通过占位view来设置状态栏
+         */
+//        View statusBar = findViewById(R.id.statusBarView);
+//        ViewGroup.LayoutParams layoutParams = statusBar.getLayoutParams();
+//        layoutParams.height = getStatusBarHeight();
+        addStatusViewWithColor(this, getResources().getColor(R.color.colorAccent));
+
+        /**
+         * 设置了 fitsSystemWindows=true 属性的页面，在点击 EditText 调出 软键盘时，整个视图都会被顶上去
+         */
+        setFitsSystemWindows(this, true);
+
         /**
          * recycleView + SmartRefreshLayout +BaseQuickAdapter 的使用
          */
@@ -216,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
 
         rv.setAdapter(recyclerAdapter);
         recyclerAdapter.addAll(list);
+        /**
+         * recycleView + SmartRefreshLayout +BaseQuickAdapter 的使用
+         */
 
 
         /**
@@ -235,6 +255,49 @@ public class MainActivity extends AppCompatActivity {
 
 //        Picasso.with(MainActivity.this).load(imgUrl).into(iv_picasso);
 
+    }
+
+    /**
+     * 设置页面最外层布局 FitsSystemWindows 属性
+     *
+     * @param activity
+     * @param value
+     */
+    public static void setFitsSystemWindows(Activity activity, boolean value) {
+        ViewGroup contentFrameLayout = (ViewGroup) activity.findViewById(android.R.id.content);
+        View parentView = contentFrameLayout.getChildAt(0);
+        if (parentView != null && Build.VERSION.SDK_INT >= 14) {
+            parentView.setFitsSystemWindows(value);
+        }
+    }
+
+    /**
+     * 添加状态栏占位视图
+     *
+     * @param activity
+     */
+    private void addStatusViewWithColor(Activity activity, int color) {
+        ViewGroup contentView = (ViewGroup) activity.findViewById(android.R.id.content);
+        View statusBarView = new View(activity);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                getStatusBarHeight());
+        statusBarView.setBackgroundColor(color);
+        contentView.addView(statusBarView, lp);
+    }
+
+    /**
+     * 利用反射获取状态栏高度
+     *
+     * @return
+     */
+    public int getStatusBarHeight() {
+        int result = 0;
+        //获取状态栏高度的资源id
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
     }
 
     public void intentActivity(Class clazz) {

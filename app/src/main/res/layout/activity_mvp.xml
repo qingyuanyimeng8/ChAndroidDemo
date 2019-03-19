@@ -12,21 +12,33 @@
         app:srlEnableOverScrollDrag="false"
         app:srlEnablePreviewInEditMode="true">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:fadingEdge="none"
-                android:overScrollMode="never"
-                android:paddingTop="12dp" />
-        </LinearLayout>
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/view_measure"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@android:color/holo_red_dark"
+                    />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:fadingEdge="none"
+                    android:overScrollMode="never"
+                    android:paddingTop="12dp" />
+            </LinearLayout>
+        </ScrollView>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
@@ -37,8 +49,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:layout_marginRight="10dp"
-        android:visibility="gone"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="90dp"

@@ -2,6 +2,7 @@ package com.example.hotfix.hotfixapplication.ui.mvp.view;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.JsResult;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -82,6 +85,16 @@ public class WebViewActivity extends AppCompatActivity {
             return super.shouldOverrideUrlLoading(view, url);
         }
 
+        @Override
+        public void onLoadResource(WebView view, String url) {
+            super.onLoadResource(view, url);
+        }
+
+        @Nullable
+        @Override
+        public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+            return super.shouldInterceptRequest(view, request);
+        }
     };
 
     //WebChromeClient主要辅助WebView处理Javascript的对话框、网站图标、网站title、加载进度等
@@ -102,6 +115,8 @@ public class WebViewActivity extends AppCompatActivity {
             return true;
         }
 
+
+
         //获取网页标题
         @Override
         public void onReceivedTitle(WebView view, String title) {
@@ -115,6 +130,7 @@ public class WebViewActivity extends AppCompatActivity {
             progressBar.setProgress(newProgress);
         }
     };
+
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

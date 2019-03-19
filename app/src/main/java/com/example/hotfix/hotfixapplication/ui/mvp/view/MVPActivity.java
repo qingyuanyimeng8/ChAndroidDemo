@@ -7,8 +7,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -22,6 +24,7 @@ import com.example.hotfix.hotfixapplication.recycler.BaseAdapterHelper;
 import com.example.hotfix.hotfixapplication.recycler.RecycleAdapter;
 import com.example.hotfix.hotfixapplication.ui.mvp.bean.NewsInfo;
 import com.example.hotfix.hotfixapplication.ui.mvp.presenter.NewsPresenter;
+import com.example.hotfix.hotfixapplication.utils.V3ScreenUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.ArrayList;
@@ -43,6 +46,8 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
     RecyclerView rv;
     @BindView(R.id.ll_pop)
     LinearLayout ll_pop;
+    @BindView(R.id.view_measure)
+    View view_measure;
     @BindView(R.id.lv_pop)
     ListView lv_pop;
 
@@ -63,15 +68,27 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
         ButterKnife.bind(this);
         newsPresenter = new NewsPresenter(this);
         newsPresenter.getNewsData(1);
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+//                return false; //防止recycleView滑动
+                return super.canScrollVertically();
+            }
+        };
         rv.setLayoutManager(manager);
+
+        /*
+          //防止recycleView滑动
+          rv.setHasFixedSize(true);
+        rv.setNestedScrollingEnabled(false);
+         */
         srl.setEnableRefresh(true);//启用刷新
         srl.setEnableLoadmore(true);//启用加载
         tv_1.setOnClickListener(this);
         tv_2.setOnClickListener(this);
         tv_3.setOnClickListener(this);
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             list.add(i + "");
         }
 
@@ -87,6 +104,12 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
                     case 0:
                         helper.getTextView(R.id.tv_name).setText("fragment思考");
                         break;
+                    case 1:
+                        helper.getTextView(R.id.tv_name).setText("单选列表");
+                        break;
+                    case 2:
+                        helper.getTextView(R.id.tv_name).setText("更改和获取控件宽高");
+                        break;
 
                 }
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +123,10 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
                             case 1:
                                 ll_pop.setVisibility(View.VISIBLE);
                                 break;
+                            case 2:
+                                measureView(view_measure);
+                                getViewHeight(view_measure);
+                                break;
 
                         }
                     }
@@ -111,15 +138,39 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
         lv_pop.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                List<ListBean> listBean=listBeans.get(itemIndex);
-                for(int i=0;i<listBean.size();i++){
-                    if(i==position){
+                List<ListBean> listBean = listBeans.get(itemIndex);
+                for (int i = 0; i < listBean.size(); i++) {
+                    if (i == position) {
                         listBean.get(i).setSelected(true);
-                    }else{
+                    } else {
                         listBean.get(i).setSelected(false);
                     }
                 }
                 listAdapter.changeList(listBeans.get(listBean.get(position).getIndex()));
+            }
+        });
+    }
+
+    //更改控件宽高
+    public void measureView(View view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        int width = (int) (V3ScreenUtil.getScreenWidth(this) - 2 * getResources().getDimension(R.dimen.margin_24));
+        params.width = width;
+        params.height = width * 1 / 2;
+        view.setLayoutParams(params);
+        Log.e("MVPActivity-----new", params.width + "---" + params.height);
+    }
+
+    //获取控件宽高
+    public static void getViewHeight(final View view) {
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+            @Override
+            public void onGlobalLayout() {
+                // TODO Auto-generated method stub
+                view.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+
+                Log.e("MVPActivity---hw", view.getMeasuredHeight()+","+view.getMeasuredWidth());
             }
         });
     }
@@ -137,15 +188,15 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
         switch (v.getId()) {
             case R.id.tv_1:
                 listAdapter.changeList(listBeans.get(0));
-                itemIndex=0;
+                itemIndex = 0;
                 break;
             case R.id.tv_2:
                 listAdapter.changeList(listBeans.get(1));
-                itemIndex=1;
+                itemIndex = 1;
                 break;
             case R.id.tv_3:
                 listAdapter.changeList(listBeans.get(2));
-                itemIndex=2;
+                itemIndex = 2;
                 break;
 
         }
@@ -185,12 +236,12 @@ public class MVPActivity extends Activity implements DataCallback, View.OnClickL
             TextView textView = (TextView) convertView.findViewById(R.id.tv_name);
             RelativeLayout rl_select = (RelativeLayout) convertView.findViewById(R.id.rl_select);
             textView.setText(listBean.getName());
-            if (listBean.isSelected()){
+            if (listBean.isSelected()) {
                 rl_select.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-            }else{
+            } else {
                 rl_select.setBackgroundColor(getResources().getColor(R.color.white));
             }
-                return convertView;
+            return convertView;
         }
     }
 
